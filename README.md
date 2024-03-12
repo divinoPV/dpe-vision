@@ -1,4 +1,4 @@
-# LLMOps_test_technique-
+# MLOps
 L'objectif est de concevoir et développer une pile LLMOps simple pour mettre à disposition des LLM et des modèles d'embedding via une API
 
 
