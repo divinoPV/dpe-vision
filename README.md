@@ -11,4 +11,9 @@ L'objectif est de concevoir et développer une pile LLMOps simple pour mettre à
      ### ligne a lancer pour le setup 
         au niveau de la racine du projet lancer cette ligne 
         pip install -e .
+     ### Installation + lancement local ZenML
+     pip install zenml
+     zenml init
+     zenml stack set default
+     zenml up --blocking
 
