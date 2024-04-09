@@ -15,5 +15,6 @@ services:
       - mlops-net
     ports:
       - "8237:8237"
+      - "8080:8080"
     volumes:
       - .:/app
