@@ -48,3 +48,14 @@ docker compose exec python-service /bin/bash -c "python src/zenml_full.py"
 ```bash
 docker compose exec python-service /bin/bash -c "zenml up --ip-address 0.0.0.0 --port 8237"
 ```
+
+# Execute MLFlow Server Pipeline
+```bash
+docker compose exec python-service /bin/bash -c "python src/experiment_tracking.py"
+```
+
+# Run MLFlow Server 
+```bash
+docker compose exec python-service /bin/bash -c "mlflow server --host 0.0.0.0 --port 8080"
+```
+
