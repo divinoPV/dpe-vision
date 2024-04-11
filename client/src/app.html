@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqA5ROo2IXLu8i8vQN6wldl0Y2_5tzjDI"></script>
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<nav class="navbar">
+			<a href="#" class="navbar-logo">DPE Vision</a>
+		</nav>
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
+
+<!-- Navbar.svelte -->
+<style>
+	body {
+		margin: 0;
+	}
+
+	.navbar {
+		background-color: #ff0000; /* Couleur de fond de la barre de navigation */
+		padding: 10px 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-direction: row;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+	}
+
+	.navbar-logo {
+		font-size: 24px;
+		font-weight: bold;
+		color: #fff; /* Couleur du texte */
+		text-decoration: none;
+	}
+
+	.navbar-nav {
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		margin-right: 800px;
+	}
+
+	.navbar-item {
+		margin-left: 20px;
+	}
+
+	.navbar-item:first-child {
+		margin-left: 0;
+	}
+
+	.navbar-link {
+		color: #fff; /* Couleur du texte */
+		text-decoration: none;
+		padding: 8px 12px;
+		border-radius: 5px;
+		transition: background-color 0.3s ease;
+	}
+
+	.navbar-link:hover {
+		background-color: rgba(255, 255, 255, 0.2); /* Couleur du lien en hover */
+	}
+</style>

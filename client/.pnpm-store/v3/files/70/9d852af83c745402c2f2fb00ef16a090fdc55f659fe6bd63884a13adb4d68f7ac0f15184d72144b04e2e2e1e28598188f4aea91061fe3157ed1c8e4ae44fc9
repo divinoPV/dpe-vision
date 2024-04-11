@@ -1,0 +1,10 @@
+[
+	{
+		"name": "src/lib/index.js",
+		"contents": "// place files you want to import through the `$lib` alias in this folder.\n"
+	},
+	{
+		"name": "src/routes/+page.svelte",
+		"contents": "<h1>Welcome to SvelteKit</h1>\n<p>Visit <a href=\"https://kit.svelte.dev\">kit.svelte.dev</a> to read the documentation</p>\n"
+	}
+]

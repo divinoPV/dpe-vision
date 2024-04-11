@@ -1,0 +1,4 @@
+pip==24.0
+polars==0.20.19
+fastapi==0.110.1
+uvicorn

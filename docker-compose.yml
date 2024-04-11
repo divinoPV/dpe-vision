@@ -1,19 +1,43 @@
 version: "3"
 
 networks:
-  mlops-net:
+  dpe_vision-net:
     driver: bridge
+    name: "dpe_vision-net"
 
 services:
-  python-service:
+  dpe_vision-mlops-service:
     build:
-      context: .
-      dockerfile: ./docker/python/Dockerfile 
+      context: "./mlops"
+      dockerfile: "../docker/mlops/Dockerfile"
     command: tail -f /dev/null
-    container_name: "python-container"
+    container_name: "dpe_vision-mlops-container"
     networks:
-      - mlops-net
+      - "dpe_vision-net"
     ports:
       - "8237:8237"
     volumes:
-      - .:/app
+      - "./mlops:/app"
+      - "./api/data/:/app/data/cleaned/"
+  dpe_vision-client-service:
+    build:
+      args:
+        CLIENT_CONTAINER_PORT: "${CLIENT_CONTAINER_PORT}"
+        NODE_VERSION: "${NODE_VERSION}"
+      context: "./client"
+      dockerfile: "../docker/client/Dockerfile"
+    container_name: "dpe_vision-client-container"
+    networks:
+      - "dpe_vision-net"
+    ports:
+      - "${CLIENT_HOST_PORT}:${CLIENT_CONTAINER_PORT}"
+    volumes:
+      - "./client:/app"
+  dpe_vision-api-service:
+    build:
+      context: "./api"
+      dockerfile: "../docker/api/Dockerfile"
+    container_name: "dpe_vision-api-container"
+    network_mode: "host"
+    volumes:
+      - "./api:/app"
