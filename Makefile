@@ -88,3 +88,35 @@ mlops:
 # Enter in api container
 api:
 	${EXEC} dpe_vision-api-service ${SHELL}
+
+# MLOPS - commands
+
+.PHONY: mlops-install
+# Install mlops package
+mlops-install:
+	${EXEC} dpe_vision-mlops-service /bin/bash -c "pip install -e .
+
+.PHONY: mlops-requirements
+# Install mlops requirements
+mlops-requirements:
+	${EXEC} dpe_vision-mlops-service /bin/bash -c "pip install -r requirements.txt"
+
+.PHONY: mlops-train
+# Run mlops train
+mlops-train:
+	${EXEC} dpe_vision-mlops-service /bin/bash -c "python src/zenml_train.py"
+
+.PHONY: mlops-predict
+# Run mlops predict
+mlops-predict:
+	${EXEC} dpe_vision-mlops-service /bin/bash -c "python src/zenml_predict.py"
+
+.PHONY: mlops-full
+# Run mlops full
+mlops-full:
+	${EXEC} dpe_vision-mlops-service /bin/bash -c "python src/zenml_full.py"
+
+.PHONY: mlops-up
+# Run mlops up
+mlops-up:
+	${EXEC} dpe_vision-mlops-service /bin/bash -c "zenml up --ip-address 0.0.0.0 --port 8237"
