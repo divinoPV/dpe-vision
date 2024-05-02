@@ -74,6 +74,8 @@ restart:
 
 # Container internal execution
 
+MLOPS = dpe_vision-mlops-service
+
 .PHONY: client
 # Enter in client container
 client:
@@ -82,7 +84,7 @@ client:
 .PHONY: mlops
 # Enter in mlops container
 mlops:
-	${EXEC} dpe_vision-mlops-service ${SHELL}
+	${EXEC} ${MLOPS} ${SHELL}
 
 .PHONY: api
 # Enter in api container
@@ -94,29 +96,39 @@ api:
 .PHONY: mlops-install
 # Install mlops package
 mlops-install:
-	${EXEC} dpe_vision-mlops-service /bin/bash -c "pip install -e .
+	${EXEC} ${MLOPS} /bin/bash -c "pip install -e .
 
 .PHONY: mlops-requirements
 # Install mlops requirements
 mlops-requirements:
-	${EXEC} dpe_vision-mlops-service /bin/bash -c "pip install -r requirements.txt"
+	${EXEC} ${MLOPS} /bin/bash -c "pip install -r requirements.txt"
 
 .PHONY: mlops-train
 # Run mlops train
 mlops-train:
-	${EXEC} dpe_vision-mlops-service /bin/bash -c "python src/zenml_train.py"
+	${EXEC} ${MLOPS} /bin/bash -c "python src/zenml_train.py"
 
 .PHONY: mlops-predict
 # Run mlops predict
 mlops-predict:
-	${EXEC} dpe_vision-mlops-service /bin/bash -c "python src/zenml_predict.py"
+	${EXEC} ${MLOPS} /bin/bash -c "python src/zenml_predict.py"
 
 .PHONY: mlops-full
 # Run mlops full
 mlops-full:
-	${EXEC} dpe_vision-mlops-service /bin/bash -c "python src/zenml_full.py"
+	${EXEC} ${MLOPS} /bin/bash -c "python src/zenml_full.py"
 
 .PHONY: mlops-up
 # Run mlops up
 mlops-up:
-	${EXEC} dpe_vision-mlops-service /bin/bash -c "zenml up --ip-address 0.0.0.0 --port 8237"
+	${EXEC} ${MLOPS} /bin/bash -c "zenml up --ip-address 0.0.0.0 --port 8237"
+
+.PHONY: mlops-experiment_tracking
+# Run mlops experiment tracking
+mlops-experiment_tracking:
+	${EXEC} ${MLOPS} /bin/bash -c "python src/experiment_tracking.py"
+
+.PHONY: mlops-mlflow
+# Run mlops mlflow
+mlops-mlflow:
+	${EXEC} ${MLOPS} /bin/bash -c "mlflow server --host 0.0.0.0 --port 8080"

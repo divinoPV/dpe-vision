@@ -39,6 +39,9 @@ services:
       context: "./api"
       dockerfile: "../docker/api/Dockerfile"
     container_name: "dpe_vision-api-container"
-    network_mode: "host"
+    networks:
+      - "dpe_vision-net"
+    ports:
+      - "8000:8000"
     volumes:
       - "./api:/app"

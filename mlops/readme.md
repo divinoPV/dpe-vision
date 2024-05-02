@@ -51,11 +51,10 @@ docker compose exec dpe_vision-mlops-service /bin/bash -c "zenml up --ip-address
 
 # Execute MLFlow Server Pipeline
 ```bash
-docker compose exec python-service /bin/bash -c "python src/experiment_tracking.py"
+docker compose exec dpe_vision-mlops-service /bin/bash -c "python src/experiment_tracking.py"
 ```
 
 # Run MLFlow Server 
 ```bash
-docker compose exec python-service /bin/bash -c "mlflow server --host 0.0.0.0 --port 8080"
+docker compose exec dpe_vision-mlops-service /bin/bash -c "mlflow server --host 0.0.0.0 --port 8080"
 ```
-

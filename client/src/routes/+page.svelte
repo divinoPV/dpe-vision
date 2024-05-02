@@ -26,7 +26,7 @@
 
     async function fetchData() {
         try {
-            const response = await fetch('http://0.0.0.0:8000/data');
+            const response = await fetch('http://localhost:8000/data');
             if (!response.ok) {
                 throw new Error('Erreur lors de la récupération des données');
             }
