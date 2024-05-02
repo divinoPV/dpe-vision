@@ -16,6 +16,7 @@ services:
       - "dpe_vision-net"
     ports:
       - "8237:8237"
+      - "8080:8080"
     volumes:
       - "./mlops:/app"
       - "./api/data/:/app/data/cleaned/"
